@@ -56,7 +56,16 @@
       border-radius:50%; border:3px solid #4a90e2; margin-bottom:15px;
     }
     .info h2 { margin-top:0; color:#4a90e2; font-weight:600; }
-    footer { text-align: center; background: linear-gradient(135deg, #4a90e2, #8e44ad); /* footer da aynı kimlik */ color: #fff; padding: 10px; position: fixed; bottom: 0; width: 100%; font-weight: 600; }
+    footer {
+  text-align: center;
+  background: transparent; /* ayrı blok gibi değil */
+  color: #fff;
+  padding: 15px;
+  width: 100%;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4); /* okunabilirlik için */
+}
+
 
     .modal {
       display: none; position: fixed; z-index: 2000;
@@ -169,6 +178,7 @@
   </script>
 </body>
 </html>
+
 
 
 
