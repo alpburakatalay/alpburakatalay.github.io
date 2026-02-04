@@ -171,11 +171,13 @@
   const hamburger = document.getElementById("hamburger");
   const sideMenu = document.getElementById("sideMenu");
 
+  // Hamburger menüyü aç/kapat
   hamburger.addEventListener("click", () => {
     sideMenu.classList.toggle("active");
     hamburger.classList.toggle("active");
   });
 
+  // Modal aç/kapat fonksiyonları
   function openBizKimiz() {
     document.getElementById("bizModal").style.display = "block";
   }
@@ -197,5 +199,3 @@
     }
   });
 </script>
-
-
