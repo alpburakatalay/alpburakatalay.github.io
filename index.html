@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>ROBO LEGENDS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- mobil uyum için -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- mobil uyum -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="192x192" href="abclogo192x192.png">
 
   <style>
-  body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #4a90e2, #8e44ad); /* tüm sayfa gradyan */ min-height: 100vh; display: flex; flex-direction: column; }
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4a90e2, #8e44ad); /* tüm sayfa gradyan */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden; /* sağdaki barı engeller */
+    }
     nav {
       display: flex;
       justify-content: space-between;
@@ -24,48 +34,53 @@
     .side-menu {
       position: fixed; top: 0; right: 0; width: 250px; height: 100%;
       background: #000; color: #fff; padding: 20px;
-      transform: translateX(100%); opacity: 0; pointer-events: none;
+      transform: translateX(110%); /* biraz daha dışarı gizle */
+      opacity: 0; pointer-events: none;
       transition: transform 0.4s ease, opacity 0.4s ease;
       z-index: 1000;
     }
     .side-menu.active { transform: translateX(0); opacity: 1; pointer-events: auto; }
-   .side-menu a {
-  display: block;
-  margin: 10px 0;
-  padding: 12px;
-  background: linear-gradient(135deg, #4a90e2, #8e44ad); /* mavi → mor gradyan */
-  border-radius: 6px;
-  text-align: center;
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
+    .side-menu a {
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
+      background: linear-gradient(135deg, #4a90e2, #8e44ad);
+      border-radius: 6px;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .side-menu a:hover {
+      background: linear-gradient(135deg, #5aa9f0, #9b59b6);
+      transform: scale(1.05);
+    }
 
-.side-menu a:hover {
-  background: linear-gradient(135deg, #5aa9f0, #9b59b6); /* hover için daha açık tonlar */
-  transform: scale(1.05);
-}
-
-
-    .container { max-width: 800px; margin: 40px auto; padding: 20px; background: rgba(255,255,255,0.9); /* hafif transparan beyaz, gradyan arkayı gösterir */ border-radius: 10px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .container {
+      max-width: 800px; margin: 40px auto; padding: 20px;
+      background: rgba(255,255,255,0.9); /* gradyan arkayı gösterir */
+      border-radius: 10px; text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
     .info img {
       width:160px; height:160px; object-fit:cover;
       border-radius:50%; border:3px solid #4a90e2; margin-bottom:15px;
     }
     .info h2 { margin-top:0; color:#4a90e2; font-weight:600; }
-    footer {
-  text-align: center;
-  background: transparent; /* ayrı blok gibi değil */
-  color: #fff;
-  padding: 15px;
-  width: 100%;
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.4); /* okunabilirlik için */
-}
 
+    footer {
+      text-align: center;
+      background: transparent; /* ayrı blok gibi değil */
+      color: #fff;
+      padding: 15px;
+      width: 100%;
+      font-weight: 600;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      margin-top: 40px; /* container’dan biraz boşluk */
+    }
 
     .modal {
       display: none; position: fixed; z-index: 2000;
@@ -121,9 +136,8 @@
   </div>
 
   <footer>
-  ROBO LEGENDS — <em>Kimlik bir Web'in kendisidir!</em>
-</footer>
-
+    ROBO LEGENDS — <em>Kimlik bir Web'in kendisidir!</em>
+  </footer>
 
   <!-- Biz Kimiz Modal -->
   <div id="bizModal" class="modal">
@@ -172,14 +186,4 @@
     document.addEventListener("click", (event) => {
       if (!sideMenu.contains(event.target) && !hamburger.contains(event.target)) {
         sideMenu.classList.remove("active");
-        hamburger.classList.remove("active");
-      }
-    });
-  </script>
-</body>
-</html>
-
-
-
-
-
+        hamburger
