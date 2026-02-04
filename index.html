@@ -36,13 +36,22 @@
     }
     .side-menu.active { transform: translateX(0); opacity: 1; pointer-events: auto; }
     .side-menu a {
-      display: block; margin: 10px 0; padding: 12px;
-      background: #4a90e2; border-radius: 6px; text-align: center;
-      color: #fff; text-decoration: none; font-size: 16px;
-      transition: background 0.3s ease, transform 0.2s ease;
-      cursor: pointer;
-    }
-    .side-menu a:hover { background: #357ABD; transform: scale(1.05); }
+  display: block;
+  margin: 10px 0;
+  padding: 12px;
+  background: #4a90e2;
+  border-radius: 6px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer; /* işte bu satır */
+}
+.side-menu a:hover {
+  background: #357ABD;
+  transform: scale(1.05);
+}
 
     .container {
       max-width: 800px; margin: 40px auto; padding: 20px;
@@ -170,5 +179,6 @@
   </script>
 </body>
 </html>
+
 
 
