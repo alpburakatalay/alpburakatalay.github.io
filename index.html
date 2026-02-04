@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>ROBO LEGENDS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- mobil uyum için -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="192x192" href="abclogo192x192.png">
 
@@ -36,22 +37,23 @@
     }
     .side-menu.active { transform: translateX(0); opacity: 1; pointer-events: auto; }
     .side-menu a {
-  display: block;
-  margin: 10px 0;
-  padding: 12px;
-  background: #4a90e2;
-  border-radius: 6px;
-  text-align: center;
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  cursor: pointer; /* işte bu satır */
-}
-.side-menu a:hover {
-  background: #357ABD;
-  transform: scale(1.05);
-}
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
+      background: #4a90e2;
+      border-radius: 6px;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .side-menu a:hover {
+      background: #357ABD;
+      transform: scale(1.05);
+    }
 
     .container {
       max-width: 800px; margin: 40px auto; padding: 20px;
@@ -94,8 +96,8 @@
       .hamburger { font-size: 24px; }
       .side-menu { width: 200px; }
       .side-menu a { font-size: 14px; padding: 10px; }
-      .info img { width:120px; height:120px; }
-      .info h2 { font-size:18px; }
+      .info img { width:100px; height:100px; }
+      .info h2 { font-size:16px; }
       .modal-content { width: 95%; margin: 20% auto; padding: 10px; }
       .close { font-size: 28px; top: 10px; right: 15px; }
     }
@@ -149,13 +151,11 @@
     const hamburger = document.getElementById("hamburger");
     const sideMenu = document.getElementById("sideMenu");
 
-    // Menü aç/kapat
     hamburger.addEventListener("click", () => {
       sideMenu.classList.toggle("active");
       hamburger.classList.toggle("active");
     });
 
-    // Modal fonksiyonları
     function openBizKimiz() {
       document.getElementById("bizModal").style.display = "block";
     }
@@ -169,7 +169,6 @@
       document.getElementById("sunumModal").style.display = "none";
     }
 
-    // Menü dışında tıklanınca kapanması
     document.addEventListener("click", (event) => {
       if (!sideMenu.contains(event.target) && !hamburger.contains(event.target)) {
         sideMenu.classList.remove("active");
@@ -179,6 +178,3 @@
   </script>
 </body>
 </html>
-
-
-
