@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>ROBO LEGENDS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- mobil uyum -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="192x192" href="abclogo192x192.png">
 
@@ -13,12 +13,13 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #4a90e2, #8e44ad); /* tüm sayfa gradyan */
+      background: linear-gradient(135deg, #4a90e2, #8e44ad);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden; /* sağdaki barı engeller */
+      overflow-x: hidden; /* yatay kaydırmayı kapatır */
     }
+
     nav {
       display: flex;
       justify-content: space-between;
@@ -34,7 +35,7 @@
     .side-menu {
       position: fixed; top: 0; right: 0; width: 250px; height: 100%;
       background: #000; color: #fff; padding: 20px;
-      transform: translateX(110%); /* biraz daha dışarı gizle */
+      transform: translateX(120%); /* biraz daha dışarı gizle */
       opacity: 0; pointer-events: none;
       transition: transform 0.4s ease, opacity 0.4s ease;
       z-index: 1000;
@@ -61,7 +62,7 @@
 
     .container {
       max-width: 800px; margin: 40px auto; padding: 20px;
-      background: rgba(255,255,255,0.9); /* gradyan arkayı gösterir */
+      background: rgba(255,255,255,0.9);
       border-radius: 10px; text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
@@ -73,13 +74,13 @@
 
     footer {
       text-align: center;
-      background: transparent; /* ayrı blok gibi değil */
+      background: transparent;
       color: #fff;
       padding: 15px;
       width: 100%;
       font-weight: 600;
       text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-      margin-top: 40px; /* container’dan biraz boşluk */
+      margin-top: 40px;
     }
 
     .modal {
@@ -102,6 +103,11 @@
     .close:hover { transform: scale(1.2); }
 
     @keyframes slideUp { from {transform: translateY(50px); opacity:0;} to {transform: translateY(0); opacity:1;} }
+
+    iframe {
+      max-width: 100%; /* taşmayı engeller */
+      display: block;
+    }
 
     @media (max-width: 600px) {
       .logo { font-size: 18px; }
@@ -184,6 +190,4 @@
     }
 
     document.addEventListener("click", (event) => {
-      if (!sideMenu.contains(event.target) && !hamburger.contains(event.target)) {
-        sideMenu.classList.remove("active");
-        hamburger
+      if (!sideMenu.contains(event.target) && !
