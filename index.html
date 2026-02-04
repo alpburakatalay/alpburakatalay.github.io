@@ -167,27 +167,35 @@
     </div>
   </div>
 
-  <script>
-    const hamburger = document.getElementById("hamburger");
-    const sideMenu = document.getElementById("sideMenu");
+ <script>
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
 
-    hamburger.addEventListener("click", () => {
-      sideMenu.classList.toggle("active");
-      hamburger.classList.toggle("active");
-    });
+  hamburger.addEventListener("click", () => {
+    sideMenu.classList.toggle("active");
+    hamburger.classList.toggle("active");
+  });
 
-    function openBizKimiz() {
-      document.getElementById("bizModal").style.display = "block";
-    }
-    function closeBizKimiz() {
-      document.getElementById("bizModal").style.display = "none";
-    }
-    function openSunum() {
-      document.getElementById("sunumModal").style.display = "block";
-    }
-    function closeSunum() {
-      document.getElementById("sunumModal").style.display = "none";
-    }
+  function openBizKimiz() {
+    document.getElementById("bizModal").style.display = "block";
+  }
+  function closeBizKimiz() {
+    document.getElementById("bizModal").style.display = "none";
+  }
+  function openSunum() {
+    document.getElementById("sunumModal").style.display = "block";
+  }
+  function closeSunum() {
+    document.getElementById("sunumModal").style.display = "none";
+  }
 
-    document.addEventListener("click", (event) => {
-      if (!sideMenu.contains(event.target) && !
+  // Menü dışında tıklanınca kapanması
+  document.addEventListener("click", (event) => {
+    if (!sideMenu.contains(event.target) && !hamburger.contains(event.target)) {
+      sideMenu.classList.remove("active");
+      hamburger.classList.remove("active");
+    }
+  });
+</script>
+
+
