@@ -67,9 +67,10 @@
       animation: fadeIn 2s ease forwards;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+  from { opacity: 0; margin-top: 20px; }
+  to   { opacity: 1; margin-top: 0; }
+}
+
 
     .info img {
       width:160px; height:160px; object-fit:cover;
@@ -96,9 +97,16 @@
       100% { text-shadow: 0 0 5px #fff, 0 0 10px #4a90e2; }
     }
 
-    .hamburger.active {
-      animation: bounce 0.4s;
-    }
+   .hamburger.active {
+  animation: bounceRotate 0.4s;
+}
+@keyframes bounceRotate {
+  0%   { transform: scale(1); }
+  30%  { transform: rotate(90deg) scale(1.2); }
+  60%  { transform: rotate(90deg) scale(0.9); }
+  100% { transform: rotate(90deg) scale(1); }
+}
+
     @keyframes bounce {
       0%   { transform: rotate(90deg) scale(1); }
       30%  { transform: rotate(90deg) scale(1.2); }
@@ -218,3 +226,4 @@
     }
   });
 </script>
+
