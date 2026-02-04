@@ -8,14 +8,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="abclogo192x192.png">
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #4a90e2, #8e44ad); /* tüm sayfa gradyan */ min-height: 100vh; display: flex; flex-direction: column; }
     nav {
       display: flex;
       justify-content: space-between;
@@ -57,20 +50,13 @@
 }
 
 
-    .container {
-      max-width: 800px; margin: 40px auto; padding: 20px;
-      background: #fff; border-radius: 10px; text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
+    .container { max-width: 800px; margin: 40px auto; padding: 20px; background: rgba(255,255,255,0.9); /* hafif transparan beyaz, gradyan arkayı gösterir */ border-radius: 10px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     .info img {
       width:160px; height:160px; object-fit:cover;
       border-radius:50%; border:3px solid #4a90e2; margin-bottom:15px;
     }
     .info h2 { margin-top:0; color:#4a90e2; font-weight:600; }
-    footer {
-      text-align: center; background: rgba(0,0,0,0.6);
-      color: #fff; padding: 10px; position: fixed; bottom: 0; width: 100%;
-    }
+    footer { text-align: center; background: linear-gradient(135deg, #4a90e2, #8e44ad); /* footer da aynı kimlik */ color: #fff; padding: 10px; position: fixed; bottom: 0; width: 100%; font-weight: 600; }
 
     .modal {
       display: none; position: fixed; z-index: 2000;
@@ -180,4 +166,5 @@
   </script>
 </body>
 </html>
+
 
