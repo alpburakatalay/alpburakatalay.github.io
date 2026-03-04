@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>ROBO LEGENDS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; margin:0; }
+    body { font-family: Arial, sans-serif; margin:0; background:#f4f4f4; }
     nav { background:#1a1f36; color:#fff; padding:14px 24px; display:flex; justify-content:space-between; align-items:center; }
     .hamburger { cursor:pointer; font-size:24px; }
     .side-menu { position:fixed; top:0; right:-260px; width:260px; height:100%; background:#1a1f36; padding:60px 24px; transition:right 0.3s; }
     .side-menu.open { right:0; }
     .side-menu a { display:block; color:#fff; text-decoration:none; margin-bottom:10px; cursor:pointer; }
+    .container { padding:40px; text-align:center; }
+    .info { background:#fff; padding:20px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+    .info h2 { color:#4a6fd4; margin-bottom:10px; }
+    .info p { color:#333; line-height:1.6; }
+    footer { background:#1a1f36; color:#ccc; text-align:center; padding:14px; }
     .modal { display:none; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); }
     .modal-content { background:#fff; margin:10% auto; padding:20px; width:80%; max-width:600px; border-radius:8px; position:relative; }
     .close { position:absolute; right:10px; top:10px; cursor:pointer; font-size:24px; }
@@ -26,6 +32,17 @@
     <a onclick="openModal('sunumModal')">Sunumumuz</a>
     <a onclick="openModal('feedbackModal')">Geri Bildirim</a>
   </div>
+
+  <div class="container">
+    <div class="info">
+      <h2>Robo Legends ve Hedeflerimiz</h2>
+      <p>Biz iş birliği ve dayanışmayla çalışan bir ekibiz. Bölgesel yarışmada bir derece alıp ulusal yarışmada da başarı elde etmeyi hedefliyoruz.</p>
+    </div>
+  </div>
+
+  <footer>
+    ROBO LEGENDS — <em>Kimlik bir Web'in kendisidir!</em>
+  </footer>
 
   <!-- Biz Kimiz Modal -->
   <div id="bizModal" class="modal">
