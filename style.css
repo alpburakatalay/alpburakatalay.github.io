@@ -140,11 +140,10 @@ footer em {
   cursor: pointer;
 }
 
-/* Iframe büyütülmüş */
 .iframe-wrapper {
   position: relative;
   width: 100%;
-  height: 600px;   /* 1.5 kat büyütülmüş */
+  height: 400px;   /* eski haline döndü */
   box-shadow: 0 2px 8px rgba(63,69,81,0.16);
   margin: 1.6em 0;
   border-radius: 8px;
@@ -156,6 +155,7 @@ footer em {
   height: 100%;
   border: none;
 }
+
 
 /* Feedback Form */
 .feedback-input, .feedback-box {
