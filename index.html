@@ -231,36 +231,70 @@
 
 
 <script>
-async function sendFeedback() {
-  const text = document.getElementById('feedbackText').value.trim();
-  const result = document.getElementById('feedbackResult');
+  const hamburger = document.getElementById('hamburger');
+  const sideMenu = document.getElementById('sideMenu');
 
-  if (!text) {
-    result.textContent = "Lütfen bir mesaj yazın.";
-    return;
-  }
+  // Menü aç/kapat
+  hamburger.addEventListener('click', () => {
+    sideMenu.classList.toggle('open');
+  });
 
-  try {
-    const response = await fetch("http://localhost:3000/feedback", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text })
-    });
-
-    if (response.ok) {
-      result.textContent = "Mesajınız GitHub Issues'a gönderildi!";
-      document.getElementById('feedbackText').value = "";
-    } else {
-      const error = await response.json();
-      result.textContent = "Hata: " + (error.message || "Gönderilemedi");
+  // Menü dışına tıklayınca kapat
+  document.addEventListener('click', (e) => {
+    if (!sideMenu.contains(e.target) && e.target !== hamburger) {
+      sideMenu.classList.remove('open');
     }
-  } catch (err) {
-    result.textContent = "Bağlantı hatası: " + err.message;
+  });
+
+  // Modal aç/kapat fonksiyonları
+  function openBizKimiz()  { document.getElementById('bizModal').style.display = 'block'; }
+  function closeBizKimiz() { document.getElementById('bizModal').style.display = 'none'; }
+  function openSunum()     { document.getElementById('sunumModal').style.display = 'block'; }
+  function closeSunum()    { document.getElementById('sunumModal').style.display = 'none'; }
+  function openFeedback()  { document.getElementById('feedbackModal').style.display = 'block'; }
+  function closeFeedback() { document.getElementById('feedbackModal').style.display = 'none'; }
+
+  // Dışarıya tıklayınca modal kapatma
+  window.onclick = function(event) {
+    ['bizModal','sunumModal','feedbackModal'].forEach(id => {
+      const modal = document.getElementById(id);
+      if (event.target === modal) modal.style.display = 'none';
+    });
+  };
+
+  // Feedback gönderme fonksiyonu
+  async function sendFeedback() {
+    const text = document.getElementById('feedbackText').value.trim();
+    const result = document.getElementById('feedbackResult');
+
+    if (!text) {
+      result.textContent = "Lütfen bir mesaj yazın.";
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+
+      if (response.ok) {
+        result.textContent = "Mesajınız GitHub Issues'a gönderildi!";
+        document.getElementById('feedbackText').value = "";
+      } else {
+        const error = await response.json();
+        result.textContent = "Hata: " + (error.message || "Gönderilemedi");
+      }
+    } catch (err) {
+      result.textContent = "Bağlantı hatası: " + err.message;
+    }
   }
-}
 </script>
+
 </body>
 </html>
+
 
 
 
