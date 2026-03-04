@@ -141,17 +141,19 @@ footer em {
 }
 
 .iframe-wrapper {
-  position: relative;
+  display: flex;              /* flexbox açtık */
+  justify-content: center;    /* yatayda ortala */
+  align-items: center;        /* dikeyde ortala */
   width: 100%;
-  height: 400px;   /* eski haline döndü */
+  height: 400px;              /* eski boyut */
+  margin: 1.6em auto;
   box-shadow: 0 2px 8px rgba(63,69,81,0.16);
-  margin: 1.6em 0;
   border-radius: 8px;
   overflow: hidden;
 }
+
 .iframe-wrapper iframe {
-  position: absolute;
-  width: 100%;
+  width: 80%;   /* iframe genişliğini biraz daraltıp ortaladık */
   height: 100%;
   border: none;
 }
