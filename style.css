@@ -142,19 +142,16 @@ footer em {
 
 .iframe-wrapper {
   width: 100%;
-  text-align: center;   /* içeriği ortalar */
+  text-align: center;   /* ortalama */
   margin: 1.6em auto;
 }
-
 .iframe-wrapper iframe {
-  display: block;       /* block element yaptık */
-  margin: 0 auto;       /* yatayda ortaladık */
-  width: 80%;           /* genişliği biraz daraltıp ortaladık */
+  display: block;
+  margin: 0 auto;       /* ortalama */
+  width: 80%;           /* ortalanmış görünüm */
   height: 400px;        /* eski boyut */
   border: none;
 }
-
-
 
 /* Feedback Form */
 .feedback-input, .feedback-box {
