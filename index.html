@@ -254,6 +254,40 @@
         if (event.target === modal) modal.style.display = 'none';
       });
     };
+async function sendFeedback() {
+  const text = document.getElementById('feedbackText').value.trim();
+  const result = document.getElementById('feedbackResult');
+
+  if (!text) {
+    result.textContent = "Lütfen bir mesaj yazın.";
+    return;
+  }
+
+  try {
+    const response = await fetch("https://api.github.com/repos/<KULLANICI>/<REPO>/issues", {
+      method: "POST",
+      headers: {
+        "Authorization": "token " + GITHUB_TOKEN, // backend'den veya env'den geliyor
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title: "Yeni Geri Bildirim",
+        body: text
+      })
+    });
+
+    if (response.ok) {
+      result.textContent = "Mesajınız GitHub Issues'a gönderildi!";
+      document.getElementById('feedbackText').value = "";
+    } else {
+      const error = await response.json();
+      result.textContent = "Hata: " + (error.message || "Gönderilemedi");
+    }
+  } catch (err) {
+    result.textContent = "Bağlantı hatası: " + err.message;
+  }
+}
 
     // Feedback mesajı webde gösteriliyor
     function sendFeedback() {
@@ -269,3 +303,4 @@
   </script>
 </body>
 </html>
+
