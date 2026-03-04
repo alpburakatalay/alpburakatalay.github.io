@@ -1,5 +1,8 @@
+// Hamburger menü
 const hamburger = document.getElementById("hamburger");
 const sideMenu = document.getElementById("sideMenu");
+
+// Modallar
 const feedbackModal = document.getElementById("feedbackModal");
 const bizModal = document.getElementById("bizModal");
 const sunumModal = document.getElementById("sunumModal");
@@ -39,3 +42,12 @@ function openFeedback() {
 function closeFeedback() {
   feedbackModal.style.display = "none";
 }
+
+// ESC tuşuna basınca tüm modallar kapanır
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    bizModal.style.display = "none";
+    sunumModal.style.display = "none";
+    feedbackModal.style.display = "none";
+  }
+});
