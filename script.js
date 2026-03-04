@@ -1,53 +1,40 @@
 // Hamburger menü
-const hamburger = document.getElementById("hamburger");
-const sideMenu = document.getElementById("sideMenu");
+const hamburger = document.getElementById('hamburger');
+const sideMenu = document.getElementById('sideMenu');
 
-// Modallar
-const feedbackModal = document.getElementById("feedbackModal");
-const bizModal = document.getElementById("bizModal");
-const sunumModal = document.getElementById("sunumModal");
-
-// Hamburger menü aç/kapat
-hamburger.addEventListener("click", () => {
-  sideMenu.classList.toggle("active");
+hamburger.addEventListener('click', () => {
+  sideMenu.style.display = sideMenu.style.display === 'flex' ? 'none' : 'flex';
 });
 
-// Menü dışında tıklanınca kapanır
-document.addEventListener("click", (event) => {
-  if (!sideMenu.contains(event.target) && !hamburger.contains(event.target)) {
-    sideMenu.classList.remove("active");
-  }
-});
-
-// Biz Kimiz modal aç/kapat
+// Modal aç/kapat fonksiyonları
 function openBizKimiz() {
-  bizModal.style.display = "flex";
+  document.getElementById('bizModal').style.display = 'block';
 }
 function closeBizKimiz() {
-  bizModal.style.display = "none";
+  document.getElementById('bizModal').style.display = 'none';
 }
 
-// Sunum modal aç/kapat
 function openSunum() {
-  sunumModal.style.display = "flex";
+  document.getElementById('sunumModal').style.display = 'block';
 }
 function closeSunum() {
-  sunumModal.style.display = "none";
+  document.getElementById('sunumModal').style.display = 'none';
 }
 
-// Feedback modal aç/kapat
 function openFeedback() {
-  feedbackModal.style.display = "flex";
+  document.getElementById('feedbackModal').style.display = 'block';
 }
 function closeFeedback() {
-  feedbackModal.style.display = "none";
+  document.getElementById('feedbackModal').style.display = 'none';
 }
 
-// ESC tuşuna basınca tüm modallar kapanır
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    bizModal.style.display = "none";
-    sunumModal.style.display = "none";
-    feedbackModal.style.display = "none";
-  }
-});
+// Modal dışına tıklayınca kapatma
+window.onclick = function(event) {
+  const modals = ['bizModal','sunumModal','feedbackModal'];
+  modals.forEach(id => {
+    const modal = document.getElementById(id);
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+};
