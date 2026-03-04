@@ -64,31 +64,48 @@
       100% { text-shadow: 0 0 5px #fff, 0 0 10px #4a90e2; }
     }
 
-    .feedback-container {
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 20px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      text-align: center;
+    .modal {
+      display: none; position: fixed; z-index: 2000;
+      left: 0; top: 0; width: 100%; height: 100%;
+      backdrop-filter: blur(4px); background: rgba(0,0,0,0.6);
     }
-    .feedback-container textarea {
+    .modal-content {
+      position: relative; width: 60%; margin: 5% auto;
+      background: #fff; border-radius: 12px; padding: 25px;
+      color: #333; text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .close {
+      position: absolute; top: 10px; right: 20px;
+      font-size: 32px; font-weight: bold; color: #000; cursor: pointer;
+    }
+    .feedback-box {
       width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px solid #4a90e2;
+      resize: none;
+      font-size: 16px;
+      background: #f9f9f9;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .feedback-container button {
+    .feedback-box:focus {
+      border-color: #8e44ad;
+      box-shadow: 0 0 10px rgba(142,68,173,0.5);
+      outline: none;
+    }
+    .feedback-btn {
+      margin-top: 15px;
       background: linear-gradient(135deg, #4a90e2, #8e44ad);
       color: #fff;
       border: none;
-      padding: 10px 16px;
-      border-radius: 6px;
+      padding: 12px 20px;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
+      transition: background 0.3s ease;
     }
-    .feedback-container button:hover {
+    .feedback-btn:hover {
       background: linear-gradient(135deg, #5aa9f0, #9b59b6);
     }
   </style>
@@ -102,7 +119,7 @@
   <div class="side-menu" id="sideMenu">
     <a onclick="openBizKimiz()">Biz Kimiz</a>
     <a onclick="openSunum()">Sunumumuz</a>
-    <a href="#feedback">Geri Bildirim</a>
+    <a onclick="openFeedback()">Geri Bildirim</a>
   </div>
 
   <div class="container">
@@ -118,13 +135,16 @@
     ROBO LEGENDS — <em>Kimlik bir Web'in kendisidir!</em>
   </footer>
 
-  <!-- Geri Bildirim Formu -->
-  <div id="feedback" class="feedback-container">
-    <h3>Geri Bildirim</h3>
-    <form action="save.php" method="post">
-      <textarea id="feedbackText" name="feedback" rows="4" placeholder="Yorumunuzu buraya yazın..." required></textarea><br><br>
-      <button type="submit">Gönder</button>
-    </form>
+  <!-- Feedback Modal -->
+  <div id="feedbackModal" class="modal">
+    <span class="close" onclick="closeFeedback()">&times;</span>
+    <div class="modal-content">
+      <h3>Geri Bildirim</h3>
+      <form action="save.php" method="post">
+        <textarea class="feedback-box" name="feedback" rows="5" placeholder="Yorumunuzu buraya yazın..." required></textarea><br>
+        <button type="submit" class="feedback-btn">Gönder</button>
+      </form>
+    </div>
   </div>
 
   <script>
@@ -135,7 +155,6 @@
       sideMenu.classList.toggle("active");
     });
 
-    // Menü dışında tıklanınca kapanır
     document.addEventListener("click", (event) => {
       if (!sideMenu.contains(event.target) && !hamburger.contains(event.target)) {
         sideMenu.classList.remove("active");
@@ -147,6 +166,12 @@
     }
     function openSunum() {
       alert("Sunumumuz kısmı buraya gelecek.");
+    }
+    function openFeedback() {
+      document.getElementById("feedbackModal").style.display = "block";
+    }
+    function closeFeedback() {
+      document.getElementById("feedbackModal").style.display = "none";
     }
   </script>
 </body>
