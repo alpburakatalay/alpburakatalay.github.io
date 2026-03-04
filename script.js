@@ -4,7 +4,7 @@ const feedbackModal = document.getElementById("feedbackModal");
 const bizModal = document.getElementById("bizModal");
 const sunumModal = document.getElementById("sunumModal");
 
-// Menü aç/kapat
+// Hamburger menü aç/kapat
 hamburger.addEventListener("click", () => {
   sideMenu.classList.toggle("active");
 });
