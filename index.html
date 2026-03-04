@@ -80,7 +80,10 @@
       font-size: 32px; font-weight: bold; color: #000; cursor: pointer;
     }
     .feedback-box {
-      width: 100%;
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 500px;
       padding: 15px;
       border-radius: 10px;
       border: 2px solid #4a90e2;
@@ -95,7 +98,8 @@
       outline: none;
     }
     .feedback-btn {
-      margin-top: 15px;
+      display: block;
+      margin: 20px auto 0 auto;
       background: linear-gradient(135deg, #4a90e2, #8e44ad);
       color: #fff;
       border: none;
@@ -141,7 +145,7 @@
     <div class="modal-content">
       <h3>Geri Bildirim</h3>
       <form action="save.php" method="post">
-        <textarea class="feedback-box" name="feedback" rows="5" placeholder="Yorumunuzu buraya yazın..." required></textarea><br>
+        <textarea class="feedback-box" name="feedback" rows="5" placeholder="Yorumunuzu buraya yazın..." required></textarea>
         <button type="submit" class="feedback-btn">Gönder</button>
       </form>
     </div>
