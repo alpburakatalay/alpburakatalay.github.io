@@ -5,7 +5,7 @@ const sideMenu = document.getElementById('sideMenu');
 hamburger.addEventListener('click', () => {
   sideMenu.style.display = sideMenu.style.display === 'flex' ? 'none' : 'flex';
 });
-
+document.styleSheets
 // Modal aç/kapat fonksiyonları
 function openBizKimiz() {
   document.getElementById('bizModal').style.display = 'block';
