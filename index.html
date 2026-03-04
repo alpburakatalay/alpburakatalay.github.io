@@ -230,31 +230,7 @@
 </div>
 
 
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const sideMenu = document.getElementById('sideMenu');
-    hamburger.addEventListener('click', () => {
-      sideMenu.classList.toggle('open');
-    });
-    document.addEventListener('click', (e) => {
-      if (!sideMenu.contains(e.target) && e.target !== hamburger) {
-        sideMenu.classList.remove('open');
-      }
-    });
-
-    function openBizKimiz()  { document.getElementById('bizModal').style.display = 'block'; }
-    function closeBizKimiz() { document.getElementById('bizModal').style.display = 'none'; }
-    function openSunum()     { document.getElementById('sunumModal').style.display = 'block'; }
-    function closeSunum()    { document.getElementById('sunumModal').style.display = 'none'; }
-    function openFeedback()  { document.getElementById('feedbackModal').style.display = 'block'; }
-    function closeFeedback() { document.getElementById('feedbackModal').style.display = 'none'; }
-
-    window.onclick = function(event) {
-      ['bizModal','sunumModal','feedbackModal'].forEach(id => {
-        const modal = document.getElementById(id);
-        if (event.target === modal) modal.style.display = 'none';
-      });
-    };
+ <script>
 async function sendFeedback() {
   const text = document.getElementById('feedbackText').value.trim();
   const result = document.getElementById('feedbackResult');
@@ -265,17 +241,10 @@ async function sendFeedback() {
   }
 
   try {
-    const response = await fetch("https://api.github.com/repos/<KULLANICI>/<REPO>/issues", {
+    const response = await fetch("http://localhost:3000/feedback", {
       method: "POST",
-      headers: {
-        "Authorization": "token " + GITHUB_TOKEN, // backend'den veya env'den geliyor
-        "Accept": "application/vnd.github+json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        title: "Yeni Geri Bildirim",
-        body: text
-      })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
     });
 
     if (response.ok) {
@@ -289,20 +258,9 @@ async function sendFeedback() {
     result.textContent = "Bağlantı hatası: " + err.message;
   }
 }
-
-    // Feedback mesajı webde gösteriliyor
-    function sendFeedback() {
-      const text = document.getElementById('feedbackText').value.trim();
-      const result = document.getElementById('feedbackResult');
-      if(text) {
-        result.textContent = "Mesajınız kaydedildi: " + text;
-        document.getElementById('feedbackText').value = "";
-      } else {
-        result.textContent = "Lütfen bir mesaj yazın.";
-      }
-    }
-  </script>
+</script>
 </body>
 </html>
+
 
 
