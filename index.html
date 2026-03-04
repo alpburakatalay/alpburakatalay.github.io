@@ -80,23 +80,25 @@
       position: absolute; top: 10px; right: 20px;
       font-size: 32px; font-weight: bold; color: #000; cursor: pointer;
     }
-    .feedback-box {
+    .feedback-input, .feedback-box {
       display: block;
-      margin: 0 auto;
+      margin: 15px auto;
       width: 80%;
       max-width: 400px;
-      padding: 15px;
+      padding: 12px;
       border-radius: 10px;
       border: 2px solid #4a90e2;
-      resize: none;
       font-size: 16px;
       background: #f9f9f9;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .feedback-box:focus {
+    .feedback-input:focus, .feedback-box:focus {
       border-color: #8e44ad;
       box-shadow: 0 0 10px rgba(142,68,173,0.5);
       outline: none;
+    }
+    .feedback-box {
+      resize: none;
     }
     .feedback-btn {
       display: block;
@@ -112,6 +114,12 @@
     }
     .feedback-btn:hover {
       background: linear-gradient(135deg, #5aa9f0, #9b59b6);
+    }
+    .note {
+      font-size: 12px;
+      color: #666;
+      margin-top: -10px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -146,6 +154,8 @@
       <span class="close" onclick="closeFeedback()">&times;</span>
       <h3>Geri Bildirim</h3>
       <form action="save.php" method="post">
+        <input type="text" class="feedback-input" name="name" placeholder="İsminiz (opsiyonel)">
+        <div class="note">Bu alanı doldurmak zorunlu değil.</div>
         <textarea class="feedback-box" name="feedback" rows="5" placeholder="Yorumunuzu buraya yazın..." required></textarea>
         <button type="submit" class="feedback-btn">Gönder</button>
       </form>
