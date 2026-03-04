@@ -230,7 +230,7 @@
 </div>
 
 
- <script>
+<script>
 async function sendFeedback() {
   const text = document.getElementById('feedbackText').value.trim();
   const result = document.getElementById('feedbackResult');
@@ -259,8 +259,39 @@ async function sendFeedback() {
   }
 }
 </script>
+<script>
+async function sendFeedback() {
+  const text = document.getElementById('feedbackText').value.trim();
+  const result = document.getElementById('feedbackResult');
+
+  if (!text) {
+    result.textContent = "Lütfen bir mesaj yazın.";
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
+    });
+
+    if (response.ok) {
+      result.textContent = "Mesajınız GitHub Issues'a gönderildi!";
+      document.getElementById('feedbackText').value = "";
+    } else {
+      const error = await response.json();
+      result.textContent = "Hata: " + (error.message || "Gönderilemedi");
+    }
+  } catch (err) {
+    result.textContent = "Bağlantı hatası: " + err.message;
+  }
+}
+</script>
+
 </body>
 </html>
+
 
 
 
