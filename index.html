@@ -8,8 +8,6 @@
   <link rel="icon" type="image/png" sizes="192x192" href="abclogo192x192.png">
 
   <style>
-    * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -17,93 +15,40 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
     }
-
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.7);
-      padding: 12px 20px;
-      color: #fff;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.7); padding: 12px 20px; color: #fff;
     }
     .logo { font-size: 20px; font-weight: 600; text-decoration:none; color:#fff; }
-    .hamburger { font-size: 26px; cursor: pointer; transition: transform 0.3s ease; }
+    .hamburger { font-size: 26px; cursor: pointer; }
 
     .side-menu {
       position: fixed; top: 0; right: 0; width: 250px; height: 100%;
       background: #000; color: #fff; padding: 20px;
-      transform: translateX(120%);
-      opacity: 0; pointer-events: none;
-      transition: transform 0.4s ease, opacity 0.4s ease;
-      z-index: 1000;
+      transform: translateX(120%); opacity: 0; pointer-events: none;
+      transition: transform 0.4s ease, opacity 0.4s ease; z-index: 1000;
     }
     .side-menu.active { transform: translateX(0); opacity: 1; pointer-events: auto; }
     .side-menu a {
-      display: block;
-      margin: 10px 0;
-      padding: 12px;
+      display: block; margin: 10px 0; padding: 12px;
       background: linear-gradient(135deg, #4a90e2, #8e44ad);
-      border-radius: 6px;
-      text-align: center;
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: background 0.3s ease, transform 0.2s ease;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    .side-menu a:hover {
-      background: linear-gradient(135deg, #5aa9f0, #9b59b6);
-      transform: scale(1.05);
+      border-radius: 6px; text-align: center; color: #fff;
+      text-decoration: none; font-size: 16px; cursor: pointer;
     }
 
     .container {
       max-width: 800px; margin: 40px auto; padding: 20px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px; text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      animation: fadeIn 2s ease forwards;
+      background: rgba(255,255,255,0.9); border-radius: 10px; text-align: center;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; margin-top: 20px; }
-      to   { opacity: 1; margin-top: 0; }
-    }
-
     .info img {
-      width:160px; height:160px; object-fit:cover;
-      border-radius:50%; border:3px solid #4a90e2; margin-bottom:15px;
+      width:160px; height:160px; object-fit:cover; border-radius:50%;
+      border:3px solid #4a90e2; margin-bottom:15px;
     }
     .info h2 { margin-top:0; color:#4a90e2; font-weight:600; }
 
     footer {
-      text-align: center;
-      background: transparent;
-      color: #fff;
-      padding: 15px;
-      width: 100%;
-      font-weight: 600;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-      margin-top: 40px;
-    }
-    footer em {
-      animation: glow 3s ease-in-out forwards;
-    }
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #fff, 0 0 10px #4a90e2; }
-      50% { text-shadow: 0 0 15px #fff, 0 0 25px #8e44ad; }
-      100% { text-shadow: 0 0 5px #fff, 0 0 10px #4a90e2; }
-    }
-
-    .hamburger.active {
-      animation: bounceRotate 0.4s;
-    }
-    @keyframes bounceRotate {
-      0%   { transform: scale(1); }
-      30%  { transform: rotate(90deg) scale(1.2); }
-      60%  { transform: rotate(90deg) scale(0.9); }
-      100% { transform: rotate(90deg) scale(1); }
+      text-align: center; color: #fff; padding: 15px; margin-top: 40px;
     }
 
     .modal {
@@ -112,36 +57,15 @@
       backdrop-filter: blur(4px); background: rgba(0,0,0,0.6);
     }
     .modal-content {
-      position: relative; width: 80%; margin: 10% auto;
+      position: relative; width: 80%; margin: 5% auto;
       background: #000; border-radius: 8px; padding: 15px;
       color: #fff; text-align: center;
-      animation: slideUp 0.6s ease;
     }
     .close {
-      position: fixed; top: 15px; right: 25px;
-      font-size: 32px; font-weight: bold; color: #fff;
-      cursor: pointer; z-index: 3000;
-      transition: transform 0.3s ease;
+      position: absolute; top: 10px; right: 20px;
+      font-size: 32px; font-weight: bold; color: #fff; cursor: pointer;
     }
-    .close:hover { transform: scale(1.2); }
-
-    @keyframes slideUp { from {transform: translateY(50px); opacity:0;} to {transform: translateY(0); opacity:1;} }
-
-    iframe {
-      max-width: 100%;
-      display: block;
-    }
-
-    @media (max-width: 600px) {
-      .logo { font-size: 18px; }
-      .hamburger { font-size: 24px; }
-      .side-menu { width: 200px; }
-      .side-menu a { font-size: 14px; padding: 10px; }
-      .info img { width:100px; height:100px; }
-      .info h2 { font-size:16px; }
-      .modal-content { width: 95%; margin: 20% auto; padding: 10px; }
-      .close { font-size: 28px; top: 10px; right: 15px; }
-    }
+    iframe { width: 100%; height: 500px; border: none; }
   </style>
 </head>
 <body>
@@ -153,6 +77,7 @@
   <div class="side-menu" id="sideMenu">
     <a onclick="openBizKimiz()">Biz Kimiz</a>
     <a onclick="openSunum()">Sunumumuz</a>
+    <a onclick="openFeedback()">Geri Bildirim</a> <!-- yeni buton -->
   </div>
 
   <div class="container">
@@ -172,62 +97,60 @@
   <div id="bizModal" class="modal">
     <span class="close" onclick="closeBizKimiz()">&times;</span>
     <div class="modal-content">
-      <p>
-        Biz birkaç yıldır First Lego League yarışmasına katılan bir okul robotik kodlama takımıyız.<br>
-        Takım koçumuz İmren İyici, bize rehberlik ederken biz ise elimizden gelenin fazlasını yapıyoruz.<br>
-        Robo Legends olarak geçen sene aldığımız başarıdan daha iyisini almak için buradayız.<br>
-        <strong>Yarışmaya katılan tüm takımlara iyi şanslar dileriz!</strong>
+      <p>Biz birkaç yıldır First Lego League yarışmasına katılan bir okul robotik kodlama takımıyız.<br>
+         Takım koçumuz İmren İyici, bize rehberlik ederken biz ise elimizden gelenin fazlasını yapıyoruz.<br>
+         Robo Legends olarak geçen sene aldığımız başarıdan daha iyisini almak için buradayız.<br>
+         <strong>Yarışmaya katılan tüm takımlara iyi şanslar dileriz!</strong>
       </p>
     </div>
   </div>
 
- <!-- Sunum Modal -->
-<div id="sunumModal" class="modal">
-  <span class="close" onclick="closeSunum()">&times;</span>
-  <div class="modal-content">
-    <!-- Canva Embed Kodunu Buraya Yapıştır -->
-    <div style="position: relative; width: 100%; height: 0; padding-top: 56.25%;
-         box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-         border-radius: 8px; will-change: transform;">
-      <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;"
-        src="https://www.canva.com/design/DAG7YU-LFKY/Hun1dccqYWnltzDsprSX5Q/view?embed"
-        allowfullscreen="allowfullscreen" allow="fullscreen">
-      </iframe>
+  <!-- Sunum Modal -->
+  <div id="sunumModal" class="modal">
+    <span class="close" onclick="closeSunum()">&times;</span>
+    <div class="modal-content">
+      <h3>Sunumumuz</h3>
+      <iframe src="https://www.canva.com/design/DAG7YU-LFKY/embed" allowfullscreen></iframe>
     </div>
   </div>
-</div>
 
+  <!-- Feedback Modal -->
+  <div id="feedbackModal" class="modal">
+    <span class="close" onclick="closeFeedback()">&times;</span>
+    <div class="modal-content">
+      <h3>Geri Bildirim</h3>
+      <!-- Buraya kendi form iframe kodunu koyabilirsin -->
+      <iframe src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true"
+              allowfullscreen></iframe>
+    </div>
+  </div>
 
-<script>
-  const hamburger = document.getElementById("hamburger");
-  const sideMenu = document.getElementById("sideMenu");
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const sideMenu = document.getElementById("sideMenu");
 
-  // Hamburger menüyü aç/kapat
-  hamburger.addEventListener("click", () => {
-    sideMenu.classList.toggle("active");
-    hamburger.classList.toggle("active");
-  });
+    hamburger.addEventListener("click", () => {
+      sideMenu.classList.toggle("active");
+    });
 
-  // Modal aç/kapat fonksiyonları
-  function openBizKimiz() {
-    document.getElementById("bizModal").style.display = "block";
-  }
-  function closeBizKimiz() {
-    document.getElementById("bizModal").style.display = "none";
-  }
-  function openSunum() {
-    document.getElementById("sunumModal").style.display = "block";
-  }
-  function closeSunum() {
-    document.getElementById("sunumModal").style.display = "none";
-  }
-
-  // Menü dışında tıklanınca kapanması
-  document.addEventListener("click", (event) => {
-    if (!sideMenu.contains(event.target) && !hamburger.contains(event.target)) {
-      sideMenu.classList.remove("active");
-      hamburger.classList.remove("active");
+    function openBizKimiz() {
+      document.getElementById("bizModal").style.display = "block";
     }
-  });
-</script>
-
+    function closeBizKimiz() {
+      document.getElementById("bizModal").style.display = "none";
+    }
+    function openSunum() {
+      document.getElementById("sunumModal").style.display = "block";
+    }
+    function closeSunum() {
+      document.getElementById("sunumModal").style.display = "none";
+    }
+    function openFeedback() {
+      document.getElementById("feedbackModal").style.display = "block";
+    }
+    function closeFeedback() {
+      document.getElementById("feedbackModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
