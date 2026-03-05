@@ -348,14 +348,6 @@
       font-size: 0.95rem;
     }
 
-    .modal-box iframe {
-      width: 100%;
-      height: 320px;
-      border: none;
-      border-radius: 8px;
-      margin-top: 12px;
-    }
-
     textarea {
       width: 100%;
       height: 130px;
@@ -472,7 +464,18 @@
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal('sunumModal')" aria-label="Kapat">✕</button>
       <h3> Sunumumuz</h3>
-      <iframe src="https://www.canva.com/design/DAHAeFJJqHQ/view?embed" allowfullscreen title="Sunum"></iframe>
+      <div style="position: relative; width: 100%; height: 0; padding-top: 56.25%;
+        padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+        border-radius: 8px; will-change: transform;">
+        <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;"
+          src="https://www.canva.com/design/DAHAeFJJqHQ/pYF2y-SKXzTz-5MdhORsfg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+        </iframe>
+      </div>
+      <a href="https://www.canva.com/design/DAHAeFJJqHQ/pYF2y-SKXzTz-5MdhORsfg/view?utm_content=DAHAeFJJqHQ&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+        target="_blank" rel="noopener"
+        style="color: var(--accent); font-size: 0.85rem; text-decoration: none; display: inline-block; margin-top: 4px;">
+        Gerçek Sunum FLL 25-26
+      </a> <span style="color: var(--muted); font-size: 0.85rem;">— PERİT AYTEK POLAT</span>
     </div>
   </div>
 
@@ -577,4 +580,3 @@
 </script>
 </body>
 </html>
-
